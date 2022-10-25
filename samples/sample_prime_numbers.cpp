@@ -17,7 +17,7 @@
 int main()
 {
   int n, m, k, count;
-
+  cout << endl;
   setlocale(LC_ALL, "Russian");
   cout << "Тестирование программ поддержки битового поля" << endl;
   cout << "             Решето Эратосфена" << endl;
