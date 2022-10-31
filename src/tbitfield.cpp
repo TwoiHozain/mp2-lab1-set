@@ -141,8 +141,9 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
 		l = bf.BitLen;
 
 	TBitField tmp(l);
+	tmp = ~tmp;
 	for (int i = 0; i < MemLen; i++)
-		tmp.pMem[i] |= pMem[i];
+		tmp.pMem[i] &= pMem[i];
 
 	for (int i = 0; i < bf.MemLen; i++)
 		tmp.pMem[i] &= bf.pMem[i];
@@ -170,11 +171,9 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 
 	for (size_t i = 0; i < bf.GetLength(); i++)
 	{
-		cout << "bit[" << i << "] = ";
-
 		do
 		{
-			cin >> tmp;
+			istr >> tmp;
 		} while (tmp != one && tmp != zero);
 
 		if (tmp == one)
@@ -186,12 +185,11 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
-	//Откатить для вывода только нужных битов
 	int size = bf.BitLen;
 	for (int i=0; i < size; i++)
 		if(bf.GetBit(i))
-			std::cout << '1';
+			ostr << '1';
 		else
-			std::cout << '0';
+			ostr << '0';
 	return ostr;
 }

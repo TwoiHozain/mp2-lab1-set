@@ -93,11 +93,12 @@ TSet TSet::operator~(void) // дополнение
 
 istream &operator>>(istream &istr, TSet &s) // ввод
 {
+    istr >> s.BitField;
     return istr;
 }
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
-    std::cout << s.BitField;
+    ostr << s.BitField;
     return ostr;
 }
