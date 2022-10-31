@@ -78,7 +78,7 @@ int TBitField::GetBit(const int n) const // получить значение б
 {
 	if (n >= BitLen || n < 0)
 		throw std::out_of_range("inex of bit out of a range");
-	return pMem[GetMemIndex(n)] & GetMemMask(n);
+	return (pMem[GetMemIndex(n)] & GetMemMask(n)) != 0;
 }
 
 // битовые операции
